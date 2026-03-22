@@ -33,22 +33,17 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       navigatorKey: appNavigatorKey,
-      errorBuilder: (context, state) => AbdelatiWidget(),
+      errorBuilder: (context, state) => HomePageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => AbdelatiWidget(),
+          builder: (context, _) => HomePageWidget(),
         ),
         FFRoute(
           name: HomePageWidget.routeName,
           path: HomePageWidget.routePath,
           builder: (context, params) => HomePageWidget(),
-        ),
-        FFRoute(
-          name: AbdelatiWidget.routeName,
-          path: AbdelatiWidget.routePath,
-          builder: (context, params) => AbdelatiWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

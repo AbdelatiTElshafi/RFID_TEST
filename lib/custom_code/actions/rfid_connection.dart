@@ -6,11 +6,7 @@ import 'package:flutter/material.dart';
 // Begin custom action code
 // DO NOT REMOVE OR MODIFY THE CODE ABOVE!
 
-import '/custom_code/actions/index.dart';
-import '/flutter_flow/custom_functions.dart';
-
-import '/custom_code/rfid_manager.dart';
-
-Future<String> getRFIDConnectionStatus() async {
-  return RfidManager.getStatus();
+Future<bool> rfidConnection() async {
+  await Future.delayed(Duration(seconds: 2));
+  return true;
 }

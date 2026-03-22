@@ -110,7 +110,16 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 alignment: AlignmentDirectional(-0.9, 0.0),
                 child: FFButtonWidget(
                   onPressed: () async {
-                    _model.connectionStatus = await actions.connectRFIDReader();
+                    _model.connectionStatus = 'Connecting....';
+                    safeSetState(() {});
+                    _model.rfidConnection = await actions.rfidConnection();
+                    if (_model.rfidConnection!) {
+                      _model.connectionStatus = 'Connected';
+                      safeSetState(() {});
+                    } else {
+                      _model.connectionStatus = 'Faield';
+                      safeSetState(() {});
+                    }
 
                     safeSetState(() {});
                   },
@@ -154,10 +163,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 ),
               ),
               Text(
-                valueOrDefault<String>(
-                  _model.connectionStatus,
-                  'Not connected',
-                ),
+                _model.connectionStatus,
                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                       font: GoogleFonts.inter(
                         fontWeight:
