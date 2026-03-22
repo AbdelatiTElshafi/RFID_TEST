@@ -11,6 +11,8 @@ class AbdelatiModel extends FlutterFlowModel<AbdelatiWidget> {
 
   // Stores action output result for [Custom Action - connectRFIDReaderAbdelati] action in Button widget.
   String? connectionstatus;
+  // Stores action output result for [Custom Action - getRFIDConnectionStatus] action in Button widget.
+  String? getRFIDConnectionStatus;
 
   @override
   void initState(BuildContext context) {}

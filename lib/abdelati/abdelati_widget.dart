@@ -81,6 +81,18 @@ class _AbdelatiWidgetState extends State<AbdelatiWidget> {
                       await actions.connectRFIDReaderAbdelati();
                   _model.connectionstatusui = _model.connectionstatus!;
                   safeSetState(() {});
+                  await Future.delayed(
+                    Duration(
+                      milliseconds: 2000,
+                    ),
+                  );
+                  _model.getRFIDConnectionStatus =
+                      await actions.getRFIDConnectionStatus();
+                  _model.connectionstatusui = valueOrDefault<String>(
+                    _model.getRFIDConnectionStatus,
+                    'kk',
+                  );
+                  safeSetState(() {});
 
                   safeSetState(() {});
                 },
